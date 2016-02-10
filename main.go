@@ -84,6 +84,14 @@ func (p *DockerMachineFsNotify) ProcessEvent(fileEvent *fsnotify.FileEvent) {
 	}
 }
 
+func (p *DockerMachineFsNotify) CleanupRecentEvents(ttl time.Duration) {
+	for key, event := range p.RecentEvents {
+		if event.ModTime.Before(time.Now().Add(-ttl)) {
+			delete(p.RecentEvents, key)
+		}
+	}
+}
+
 func main() {
 	var (
 		directory         = kingpin.Arg("directory", "").Required().String()
@@ -112,6 +120,9 @@ func main() {
 
 			case err := <-watcher.Error:
 				log.WithFields(log.Fields{"error": err}).Warn("Error in fsnotify watcher")
+
+			case <-time.After(1 * time.Minute):
+				p.CleanupRecentEvents(10 * time.Second)
 			}
 		}
 	}()
