@@ -16,6 +16,14 @@ Forward file system events to a docker machine VM
 make build
 ```
 
+## Creating a new release for this project
+
+Make sure that you are on the latest `master` branch and that you have a clean Git working directory.
+
+```
+VERSION=<version> GITHUB_TOKEN=<github-api-token> make release
+```
+
 ## Usage
 
 ```
