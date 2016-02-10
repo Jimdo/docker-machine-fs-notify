@@ -12,6 +12,10 @@ import (
 	"gopkg.in/alecthomas/kingpin.v2"
 )
 
+const (
+	touchTimeFormat string = "200601021504.05" // YYYYMMDDhhmm.SS
+)
+
 type FsEvent struct {
 	File    string
 	ModTime time.Time
@@ -51,7 +55,7 @@ func (d *DockerMachineFsNotify) NotifyVm(event FsEvent) error {
 		return err
 	}
 
-	return client.Shell("touch -m -c " + event.File)
+	return client.Shell("touch -t " + event.ModTime.UTC().Format(touchTimeFormat) + " -m -c " + event.File)
 }
 
 func (p *DockerMachineFsNotify) ProcessEvent(fileEvent *fsnotify.FileEvent) {
