@@ -33,3 +33,4 @@ VERSION=<version> GITHUB_TOKEN=<github-api-token> make release
 ## Links
 
 * https://github.com/codekitchen/fsevents_to_vm
+* https://github.com/zaius/vagrant-listen-server
