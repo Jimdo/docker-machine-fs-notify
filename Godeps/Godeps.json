@@ -1,9 +1,6 @@
 {
 	"ImportPath": "github.com/Jimdo/docker-machine-fs-notify",
-	"GoVersion": "go1.5.1",
-	"Packages": [
-		"./..."
-	],
+	"GoVersion": "go1.5",
 	"Deps": [
 		{
 			"ImportPath": "github.com/Sirupsen/logrus",
@@ -17,6 +14,42 @@
 		{
 			"ImportPath": "github.com/alecthomas/units",
 			"Rev": "2efee857e7cfd4f3d0138cc3cbb1b4966962b93a"
+		},
+		{
+			"ImportPath": "github.com/bronze1man/kmg/errors",
+			"Rev": "05317bfd7d39a421b7520e69acd9edf35ff8e0e2"
+		},
+		{
+			"ImportPath": "github.com/bronze1man/kmg/fsnotify",
+			"Rev": "05317bfd7d39a421b7520e69acd9edf35ff8e0e2"
+		},
+		{
+			"ImportPath": "github.com/bronze1man/kmg/kmgCmd",
+			"Rev": "05317bfd7d39a421b7520e69acd9edf35ff8e0e2"
+		},
+		{
+			"ImportPath": "github.com/bronze1man/kmg/kmgFile",
+			"Rev": "05317bfd7d39a421b7520e69acd9edf35ff8e0e2"
+		},
+		{
+			"ImportPath": "github.com/bronze1man/kmg/kmgMath",
+			"Rev": "05317bfd7d39a421b7520e69acd9edf35ff8e0e2"
+		},
+		{
+			"ImportPath": "github.com/bronze1man/kmg/kmgRand",
+			"Rev": "05317bfd7d39a421b7520e69acd9edf35ff8e0e2"
+		},
+		{
+			"ImportPath": "github.com/bronze1man/kmg/kmgSlice",
+			"Rev": "05317bfd7d39a421b7520e69acd9edf35ff8e0e2"
+		},
+		{
+			"ImportPath": "github.com/bronze1man/kmg/kmgSort",
+			"Rev": "05317bfd7d39a421b7520e69acd9edf35ff8e0e2"
+		},
+		{
+			"ImportPath": "github.com/bronze1man/kmg/kmgTime",
+			"Rev": "05317bfd7d39a421b7520e69acd9edf35ff8e0e2"
 		},
 		{
 			"ImportPath": "github.com/docker/docker/pkg/term",
@@ -50,8 +83,8 @@
 		},
 		{
 			"ImportPath": "github.com/howeyc/fsnotify",
-			"Comment": "v0.9.0-16-gf0c08ee",
-			"Rev": "f0c08ee9c60704c1879025f2ae0ff3e000082c13"
+			"Comment": "v0.9.0-14-g4894fe7",
+			"Rev": "4894fe7efedeeef21891033e1cce3b23b9af7ad2"
 		},
 		{
 			"ImportPath": "github.com/samalba/dockerclient",
@@ -64,6 +97,10 @@
 		{
 			"ImportPath": "golang.org/x/crypto/ssh",
 			"Rev": "1f22c0103821b9390939b6776727195525381532"
+		},
+		{
+			"ImportPath": "golang.org/x/sys/unix",
+			"Rev": "50c6bc5e4292a1d4e65c6e9be5f53be28bcbe28e"
 		},
 		{
 			"ImportPath": "gopkg.in/alecthomas/kingpin.v2",
