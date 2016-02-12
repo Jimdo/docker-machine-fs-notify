@@ -5,10 +5,10 @@ import (
 	"time"
 
 	log "github.com/Sirupsen/logrus"
+	"github.com/bronze1man/kmg/fsnotify"
 	"github.com/docker/machine/commands/mcndirs"
 	"github.com/docker/machine/libmachine"
 	"github.com/docker/machine/libmachine/state"
-	"github.com/howeyc/fsnotify"
 	"gopkg.in/alecthomas/kingpin.v2"
 )
 
@@ -110,7 +110,7 @@ func main() {
 
 	p := NewDockerMachineFsNotify(*dockerMachineName)
 
-	watcher, err := fsnotify.NewWatcher()
+	watcher, err := fsnotify.NewWatcher(1024)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -121,10 +121,10 @@ func main() {
 	go func() {
 		for {
 			select {
-			case ev := <-watcher.Event:
+			case ev := <-watcher.GetEventChan():
 				p.ProcessEvent(ev)
 
-			case err := <-watcher.Error:
+			case err := <-watcher.GetErrorChan():
 				log.WithFields(log.Fields{"error": err}).Warn("Error in fsnotify watcher")
 
 			case <-time.After(1 * time.Minute):
@@ -133,7 +133,7 @@ func main() {
 		}
 	}()
 
-	err = watcher.Watch(*directory)
+	err = watcher.WatchRecursion(*directory)
 	if err != nil {
 		log.WithFields(log.Fields{"error": err}).Fatal("Error in fsnotify watcher")
 	}
