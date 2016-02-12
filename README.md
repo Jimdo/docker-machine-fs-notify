@@ -30,6 +30,23 @@ VERSION=<version> GITHUB_TOKEN=<github-api-token> make release
 ./docker-machine-fs-notify <directory> <docker-machine-name>
 ```
 
+## Updating dependencies:
+
+Start a `Go` Docker Container:
+```
+docker run -it -v $PWD:/go/src/github.com/Jimdo/docker-machine-fs-notify -w /go/src/github.com/Jimdo/docker-machine-fs-notify golang:1.5.1 /bin/bash
+```
+
+Install packages to `Godeps`:
+```
+go get github.com/tools/godep
+godep restore
+# ...
+# Install your packages
+# ...
+godep save
+```
+
 ## Links
 
 * https://github.com/codekitchen/fsevents_to_vm
