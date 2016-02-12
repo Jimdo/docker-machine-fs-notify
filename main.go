@@ -59,6 +59,12 @@ func (d *DockerMachineFsNotify) NotifyVm(event FsEvent) error {
 }
 
 func (p *DockerMachineFsNotify) ProcessEvent(fileEvent *fsnotify.FileEvent) {
+
+	if fileEvent.IsDelete() || fileEvent.IsRename() {
+		// We cannot handle delete for the moment
+		return
+	}
+
 	event := FsEvent{
 		File: fileEvent.Name,
 	}
